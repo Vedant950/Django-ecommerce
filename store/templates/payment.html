@@ -2,7 +2,7 @@
 {% load static %}
 {% block content%}
 <div class="container">
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 var options = {
     "key": "{{razorpay_merchant_key}}",
@@ -16,6 +16,7 @@ var options = {
         "color": "#3399cc"
     }
 };
+console.log(options);
 var rzp1 = new Razorpay(options);
 document.getElementById('rzp-button1').onclick = function(e){
     rzp1.open();

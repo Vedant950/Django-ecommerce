@@ -162,6 +162,8 @@ use_default.addEventListener('change', function() {
     order_id: "{{ razorpay_order_id }}", 
     callback_url: "{{ callback_url }}",
   };
+  console.log(options);
+  console.log(context);
   var rzp1 = new Razorpay(options);
   document.getElementById("rzp-button1").onclick = function (e) {
     rzp1.open();

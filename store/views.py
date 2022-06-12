@@ -145,14 +145,15 @@ class CheckoutView(View):
                     context['razorpay_amount'] = amount
                     context['currency'] = currency
                     context['callback_url'] = callback_url
-                    return HttpResponseRedirect(reverse('store:checkout-page', kwargs={"context":context}))
+                    # return HttpResponseRedirect(reverse('store:paymenthandler', kwarg={"context":context}))
+                    return redirect(reverse('store:paymenthandler'), context=context)
 
         except ObjectDoesNotExist:
             messages.warning(self.request, "You do not have an active order")
             return redirect(reverse('store:cart-page'))         
 
 
-@csrf_exempt
+# @csrf_exempt
 def paymenthandler(request):
     if request.method == "POST":
         order = Cart.objects.get(user=request.user, ordered=False)
